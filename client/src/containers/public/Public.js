@@ -10,7 +10,7 @@ export const Public = () => {
       <div className="w-full border border-green-400 flex-auto">
         <Outlet></Outlet>
       </div>
-      <div className="w-[329px] border border-red-400 flex-none">
+      <div className="w-[329px] border border-red-400 flex-none lg:hidden">
         <SidebarRight></SidebarRight>
       </div>
     </div>
