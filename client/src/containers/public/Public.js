@@ -1,17 +1,23 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 import { SidebarRight, SidebarLeft } from "../../components";
+import { Player } from "./Player";
 export const Public = () => {
   return (
-    <div className="w-full flex overflow-y-auto">
-      <div className="w-[240px] border border-blue-400 flex-none">
-        <SidebarLeft></SidebarLeft>
+    <div className="w-full flex flex-col min-h-screen">
+      <div className="h-full flex flex-auto">
+        <div className="w-[240px] flex-none border border-black">
+          <SidebarLeft></SidebarLeft>
+        </div>
+        <div className="w-full flex-auto bg-gray-100">
+          <Outlet></Outlet>
+        </div>
+        <div className="w-[329px] flex-none 1600:hidden  border border-black">
+          <SidebarRight></SidebarRight>
+        </div>
       </div>
-      <div className="w-full border border-green-400 flex-auto">
-        <Outlet></Outlet>
-      </div>
-      <div className="w-[329px] border border-red-400 flex-none lg:hidden">
-        <SidebarRight></SidebarRight>
+      <div className="flex-none h-[90px] w-full bg-gray-500">
+        <Player></Player>
       </div>
     </div>
   );

@@ -17,8 +17,11 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.1.1",
     "react-scripts": "next",
+    "react-slick": "0.28.1",
     "redux-persist": "^6.0.0",
+    "slick-carousel": "1.8.1",
     "styled-components": "^5.3.3",
+    "swiper": "^8.4.5",
     "thunk": "0.0.1",
     "web-vitals": "^1.0.1"
   },

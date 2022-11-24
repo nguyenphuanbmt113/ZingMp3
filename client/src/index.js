@@ -7,6 +7,7 @@ import store from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
 import { BrowserRouter as Router } from "react-router-dom";
+  import "swiper/css";
 let persistor = persistStore(store);
 ReactDOM.render(
   <React.StrictMode>

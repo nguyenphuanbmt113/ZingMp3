@@ -12,18 +12,18 @@ export const Header = () => {
           <AiOutlineArrowRight size="20px"></AiOutlineArrowRight>
         </div>
       </div>
-      <div className="w-1/2">
+      <div className="w-1/2 text-sm">
         <input
           type="text"
-          className="py-2 px-4 h-[40px] w-full rounded-3xl bg-gray-100 placeholder:text-sm"
+          className="py-2 px-4 h-[40px] w-full rounded-3xl bg-white placeholder:text-sm"
           placeholder="Tìm Kiếm bài hát, Nghệ sĩ"
         />
       </div>
       <div className="flex items-center gap-3 text-sm ml-auto">
-        <button className="px-3 py-2 bg-red-500 text-white rounded-md">
+        <button className="px-3 py-2 border-2 borer-black text-black rounded-md hover:bg-gray-300">
           Đăng Kí
         </button>
-        <button className="px-3 py-2 bg-blue-500 text-white rounded-md">
+        <button className="px-3 py-2 border-2 borer-black text-black rounded-md hover:bg-gray-300">
           Đăng Nhập
         </button>
       </div>

@@ -4,8 +4,9 @@ import {
   AiOutlinePlayCircle,
   AiOutlineArrowLeft,
   AiOutlineArrowRight,
+  AiOutlineHeart,
 } from "react-icons/ai";
-import { BsPieChart } from "react-icons/bs";
+import { BsPieChart, BsThreeDots } from "react-icons/bs";
 const icons = {
   MdOutlineLibraryMusic,
   RiCompassDiscoverLine,
@@ -13,5 +14,7 @@ const icons = {
   AiOutlinePlayCircle,
   AiOutlineArrowLeft,
   AiOutlineArrowRight,
+  AiOutlineHeart,
+  BsThreeDots,
 };
 export default icons;
