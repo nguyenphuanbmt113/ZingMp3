@@ -1,12 +1,23 @@
 import React, { useEffect } from "react";
-import icons from "../ultis/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { AiOutlineHeart } from "react-icons/ai";
-import { BsThreeDots } from "react-icons/bs";
 import {
   fetchDetailSongById,
   fetchInfoSongById,
 } from "../../redux/reducer/musicSlide";
+import icons from "../../ultis/icons";
+const {
+  AiOutlineHeart,
+  BsVolumeUp,
+  AiFillHeart,
+  BsThreeDots,
+  MdSkipNext,
+  MdSkipPrevious,
+  CiRepeat,
+  BsPauseFill,
+  BsFillPlayFill,
+  CiShuffle,
+  BiVolumeMute,
+} = icons;
 export const Player = () => {
   const {
     curSongId,
@@ -27,9 +38,12 @@ export const Player = () => {
     getSongById();
   }, [curSongId, dispatch]);
   console.log("curSongId", curSongId);
+  const handleTogglePlayMusic = ()=>{
+    
+  }
   return (
     <div className="h-full px-5 bg-main-400 flex">
-      <div className="w-[30%] border border-blue-500 flex gap-3 items-center">
+      <div className="w-[30%]  flex gap-3 items-center justify-center">
         <img
           src={songInfo?.thumbnail}
           alt="thumbnail"
@@ -52,8 +66,43 @@ export const Player = () => {
           </span>
         </div>
       </div>
-      <div className="w-[40%] border border-red-500">Music</div>
-      <div className="w-[30%] border border-green-500">Extra Features</div>
+      <div className="w-[40%] flex-auto flex items-center justify-center gap-4 flex-col  py-2">
+        <div className="flex gap-8 justify-center items-center">
+          <span className="cursor-pointer" title="Bật phát ngẫu nhiên">
+            <CiShuffle size={24} />
+          </span>
+          <span className="cursor-pointer">
+            <MdSkipPrevious size={24} />
+          </span>
+          <span
+            className="p-1 border border-gray-700 cursor-pointer hover:text-main-500 rounded-full"
+            onClick={()=>handleTogglePlayMusic()}>
+            <BsPauseFill size={30} />
+            {/* <BsFillPlayFill size={30} /> */}
+          </span>
+          <span className="cursor-pointer">
+            <MdSkipNext size={24} />
+          </span>
+          <span className="cursor-pointer" title="Bật phát lại tất cả">
+            <CiRepeat size={24} />
+          </span>
+        </div>
+        <div className="w-full">
+          <div className="bg-[rgba(0,0,0,0.1)] relative m-auto h-[3px] w-4/5 rounded-l-full rounded-r-full">
+            <div
+              id="thumb-progress"
+              className="bg-[#0e8080] absolute top-0 left-0 h-[3px] rounded-l-full rounded-r-full"></div>
+          </div>
+        </div>
+      </div>
+      <div className="w-[30%] flex-auto flex items-center justify-center gap-5">
+        <span>
+          <BiVolumeMute size={20}></BiVolumeMute>
+        </span>
+        <span>
+          <BsVolumeUp size={20}></BsVolumeUp>
+        </span>
+      </div>
     </div>
   );
 };

@@ -6,13 +6,13 @@ export const Public = () => {
   return (
     <div className="w-full flex flex-col min-h-screen">
       <div className="h-full flex flex-auto">
-        <div className="w-[240px] flex-none border border-black">
+        <div className="w-[240px] flex-none">
           <SidebarLeft></SidebarLeft>
         </div>
         <div className="w-full flex-auto bg-gray-100">
           <Outlet></Outlet>
         </div>
-        <div className="w-[329px] flex-none 1600:hidden  border border-black">
+        <div className="w-[329px] flex-none 1600:hidden">
           <SidebarRight></SidebarRight>
         </div>
       </div>
