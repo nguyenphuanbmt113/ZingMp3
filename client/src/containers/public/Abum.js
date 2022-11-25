@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getAlbum } from "../../services/apiService";
-import moment from "moment";
 export const Album = () => {
   const { title, abid } = useParams();
   const [album, setAlbum] = useState([]);
@@ -33,7 +32,7 @@ export const Album = () => {
             <span className="flex gap-2 items-center text-gray-500 text-xs">
               <span>Cập nhật:</span>
               <span>
-                {moment.unix(album?.contentLastUpdate).format("DD/MM/YYYY")}
+                {/* {moment.unix(album?.contentLastUpdate).format("DD/MM/YYYY")} */}
               </span>
             </span>
             <span className="flex gap-2 items-center text-gray-500 text-xs">
