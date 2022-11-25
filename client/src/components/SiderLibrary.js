@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper";
-import { setCurSongId } from "../redux/reducer/musicSlide";
+import { setCurSongId, setIsPlaying } from "../redux/reducer/musicSlide";
 export const SiderLibrary = () => {
   const dispatch = useDispatch();
   const dataBanner = useSelector((state) => state.home.dataBanner);
@@ -13,6 +13,7 @@ export const SiderLibrary = () => {
     console.log("item:", item);
     if (item.type === 1) {
       dispatch(setCurSongId(item));
+      dispatch(setIsPlaying(true));
     }
   };
   return (

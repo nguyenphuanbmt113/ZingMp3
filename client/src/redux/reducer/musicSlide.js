@@ -3,6 +3,7 @@ import { getDetailSongById, getSongInfo } from "../../services/apiService";
 
 const initialState = {
   curSongId: null,
+  isPlaying: false,
   detailSong: {},
   detailInfoSong: {},
 };
@@ -27,21 +28,23 @@ const MusicReducer = createSlice({
     setCurSongId: (state, action) => {
       state.curSongId = action.payload.encodeId;
     },
+    setIsPlaying: (state, action) => {
+      console.log("action", action);
+      state.isPlaying = action.payload;
+    },
   },
   extraReducers: (builder) => {
     // Add reducers for additional action types here, and handle loading state as needed
     builder.addCase(fetchDetailSongById.fulfilled, (state, action) => {
-      // console.log(">>>>>action:", action);
       state.detailSong = action.payload;
     });
     builder.addCase(fetchInfoSongById.fulfilled, (state, action) => {
-      // console.log(">>>>>action:", action);
       state.detailInfoSong = action.payload.data;
     });
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setCurSongId } = MusicReducer.actions;
+export const { setCurSongId, setIsPlaying } = MusicReducer.actions;
 
 export default MusicReducer.reducer;

@@ -5,6 +5,7 @@ import {
 } from "react-icons/md";
 import { RiCompassDiscoverLine } from "react-icons/ri";
 import { CiShuffle, CiRepeat } from "react-icons/ci";
+import { ImPlay3 } from "react-icons/im";
 import { BiVolumeMute } from "react-icons/bi";
 import {
   AiOutlinePlayCircle,
@@ -34,5 +35,6 @@ const icons = {
   BsPauseFill,
   BsVolumeUp,
   BiVolumeMute,
+  ImPlay3,
 };
 export default icons;
