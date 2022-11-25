@@ -1,7 +1,12 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getDetailSongById, getSongInfo } from "../../services/apiService";
+import {
+  getAlbum,
+  getDetailSongById,
+  getSongInfo,
+} from "../../services/apiService";
 
 const initialState = {
+  abum: [],
   curSongId: null,
   isPlaying: false,
   detailSong: {},
@@ -18,6 +23,13 @@ export const fetchInfoSongById = createAsyncThunk(
   "song/fetchInfoSongById",
   async (songId) => {
     const response = await getSongInfo(songId);
+    return response;
+  }
+);
+export const fetchAlbum = createAsyncThunk(
+  "song/fetchAlbum",
+  async (albumid) => {
+    const response = await getAlbum(albumid);
     return response;
   }
 );
@@ -40,6 +52,9 @@ const MusicReducer = createSlice({
     });
     builder.addCase(fetchInfoSongById.fulfilled, (state, action) => {
       state.detailInfoSong = action.payload.data;
+    });
+    builder.addCase(fetchAlbum.fulfilled, (state, action) => {
+      state.abum = action.payload.data;
     });
   },
 });

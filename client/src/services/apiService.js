@@ -9,4 +9,8 @@ const getDetailSongById = (idSong) => {
 const getSongInfo = (idSong) => {
   return axios.get(`/infosong?id=${idSong}`);
 };
-export { getHome, getDetailSongById, getSongInfo };
+//get abum
+const getAlbum = (idPlaylist) => {
+  return axios.get(`/detailplaylist?id=${idPlaylist}`);
+};
+export { getHome, getDetailSongById, getSongInfo, getAlbum };

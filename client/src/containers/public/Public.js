@@ -2,6 +2,7 @@ import React from "react";
 import { Outlet } from "react-router-dom";
 import { SidebarRight, SidebarLeft } from "../../components";
 import { Player } from "./Player";
+import { Header } from "../../components/Header";
 export const Public = () => {
   return (
     <div className="w-full flex flex-col min-h-screen">
@@ -10,6 +11,9 @@ export const Public = () => {
           <SidebarLeft></SidebarLeft>
         </div>
         <div className="w-full flex-auto bg-gray-100">
+          <div className="h-[70px] px-[59px] flex items-center mb-5 lg:px-[50px]">
+            <Header></Header>
+          </div>
           <Outlet></Outlet>
         </div>
         <div className="w-[329px] flex-none 1600:hidden">

@@ -44,12 +44,10 @@ export const Player = () => {
     detailSong,
     detailInfoSong: songInfo,
   } = useSelector((state) => state.song);
-  console.log("isPlaying", isPlaying);
   const dispatch = useDispatch();
   useEffect(() => {
     const getSongById = async () => {
       const data = await dispatch(fetchDetailSongById(curSongId));
-      console.log("data", data);
       return data;
     };
     const getInfoById = async () => {
@@ -57,7 +55,6 @@ export const Player = () => {
       return data;
     };
     if (detailSong) {
-      console.log("detailSong", detailSong);
       setAudio(new Audio(detailSong?.data?.["128"]));
     } else {
       setAudio(new Audio());
