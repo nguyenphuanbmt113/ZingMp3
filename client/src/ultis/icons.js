@@ -18,6 +18,8 @@ import {
   BsThreeDots,
   BsPauseFill,
   BsVolumeUp,
+  BsDot,
+  BsMusicNoteBeamed,
 } from "react-icons/bs";
 const icons = {
   MdOutlineLibraryMusic,
@@ -36,5 +38,7 @@ const icons = {
   BsVolumeUp,
   BiVolumeMute,
   ImPlay3,
+  BsDot,
+  BsMusicNoteBeamed,
 };
 export default icons;

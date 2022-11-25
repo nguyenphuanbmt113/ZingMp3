@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getAlbum } from "../../services/apiService";
+import moment from "moment";
+import { Lists } from "../../components/Lists";
+import { Scrollbars } from "react-custom-scrollbars-2";
 export const Album = () => {
-  const { title, abid } = useParams();
+  const { abid } = useParams();
   const [album, setAlbum] = useState([]);
   useEffect(() => {
     const fetchAlbum = async () => {
@@ -14,12 +17,10 @@ export const Album = () => {
     };
     fetchAlbum();
   }, [abid]);
-  console.log("abid", abid);
-  console.log("title", title);
   return (
     <>
       <div className="flex gap-8 w-full h-full px-[59px]">
-        <div className="flex-none w-1/4 border border-red-500 flex flex-col items-center gap-2">
+        <div className="flex-none w-1/4 flex flex-col items-center gap-2">
           <img
             src={album?.thumbnailM}
             alt="thumbnail"
@@ -32,7 +33,7 @@ export const Album = () => {
             <span className="flex gap-2 items-center text-gray-500 text-xs">
               <span>Cập nhật:</span>
               <span>
-                {/* {moment.unix(album?.contentLastUpdate).format("DD/MM/YYYY")} */}
+                {moment.unix(album?.contentLastUpdate).format("DD/MM/YYYY")}
               </span>
             </span>
             <span className="flex gap-2 items-center text-gray-500 text-xs">
@@ -43,20 +44,19 @@ export const Album = () => {
             )}K người yêu thích`}</span>
           </div>
         </div>
-        {/* <Scrollbars style={{ width: "100%", height: "80%" }}>
+        <Scrollbars style={{ width: "100%", height: "80%" }}>
           <div className="flex-auto mb-40">
             <span className="text-sm">
               <span className="text-gray-600">Lời tựa </span>
-              <span>{playlistData?.sortDescription}</span>
+              <span>{album?.sortDescription}</span>
             </span>
             <Lists
-              songs={playlistData?.song?.items}
-              totalDuration={playlistData?.song?.totalDuration}
+              songs={album?.song?.items}
+              totalDuration={album?.song?.totalDuration}
             />
           </div>
-        </Scrollbars> */}
+        </Scrollbars>
       </div>
-      s
     </>
   );
 };
