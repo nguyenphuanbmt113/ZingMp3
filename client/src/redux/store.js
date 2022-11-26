@@ -4,12 +4,14 @@ import { combineReducers } from "redux";
 import counterReducer from "../redux/reducer/countSlice";
 import bannerSlice from "../redux/reducer/bannerSlide";
 import MusicReducer from "../redux/reducer/musicSlide";
+import loadingSlice from "../redux/reducer/loadingSlice";
 import { persistReducer } from "redux-persist";
 import thunk from "redux-thunk";
 const reducers = combineReducers({
   counter: counterReducer,
   home: bannerSlice,
   song: MusicReducer,
+  loading: loadingSlice,
 });
 const persistConfig = {
   key: "root",

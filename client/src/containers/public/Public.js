@@ -4,7 +4,11 @@ import { SidebarRight, SidebarLeft } from "../../components";
 import { Player } from "./Player";
 import { Header } from "../../components/Header";
 import { Scrollbars } from "react-custom-scrollbars-2";
+import { Loading } from "../../components/Loading";
+import { useSelector } from "react-redux";
 export const Public = () => {
+  const { loading } = useSelector((state) => state.loading);
+  console.log("loading", loading);
   return (
     <div className="w-full flex flex-col min-h-screen">
       <div className="h-full flex flex-auto">
@@ -12,6 +16,11 @@ export const Public = () => {
           <SidebarLeft></SidebarLeft>
         </div>
         <div className="w-full flex-auto bg-gray-100">
+          {loading && (
+            <div className="absolute inset-0 bg-black/50 z-50 flex items-center justify-center">
+              <Loading></Loading>
+            </div>
+          )}
           <div className="h-[70px] px-[59px] flex items-center mb-5 lg:px-[50px]">
             <Header></Header>
           </div>

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 import { useNavigate } from "react-router-dom";
-export const Section = (props) => {
+const Section = (props) => {
   const { data } = props;
   const navigate = useNavigate();
   const SliceWord = (string) => {
@@ -12,13 +12,13 @@ export const Section = (props) => {
     navigate(`${link}`);
   };
   return (
-    <div className="mt-12 flex flex-col gap-5">
+    <div className="mt-9 flex flex-col gap-5">
       <div className="flex items-center justify-between">
         <div className="font-medium text-lg capitalize">{data.title}</div>
-        <div className="text-sm capitalize">Tất cả</div>
+        <div className="text-sm capitalize p-2 bg-gray-200">Tất cả</div>
       </div>
       <div className="grid grid-cols-5 lg:grid-cols-3 md:grid-cols-2 gap-4 gap-y-6">
-        {data.items.map((item) => {
+        {data.items.slice(0, 5).map((item) => {
           return (
             <div
               key={item.encodeId}
@@ -34,3 +34,4 @@ export const Section = (props) => {
     </div>
   );
 };
+export default memo(Section);

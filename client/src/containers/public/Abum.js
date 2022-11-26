@@ -1,17 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { getAlbum } from "../../services/apiService";
 import moment from "moment";
-import { Lists } from "../../components/Lists";
+import React, { useEffect, useState } from "react";
 import { Scrollbars } from "react-custom-scrollbars-2";
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import { Lists } from "../../components/Lists";
+import { setLoading } from "../../redux/reducer/loadingSlice";
+import { getAlbum } from "../../services/apiService";
 export const Album = () => {
+  const dispatch = useDispatch();
+  // const { loading } = useSelector((state) => state.loading);
+  // console.log("loading", loading);
   const { abid } = useParams();
   const [album, setAlbum] = useState([]);
   useEffect(() => {
     const fetchAlbum = async () => {
+      dispatch(setLoading(true));
       let response = await getAlbum(abid);
       if (response.err === 0) {
         setAlbum(response.data);
+        dispatch(setLoading(false));
       }
     };
     fetchAlbum();

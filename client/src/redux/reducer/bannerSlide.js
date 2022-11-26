@@ -6,6 +6,9 @@ const initialState = {
   dataPlaylist: [],
   newEveryDay: [],
   top100: [],
+  xone: [],
+  livestream: [],
+  resentMusic: [],
 };
 export const fetchBanner = createAsyncThunk("home/fetchBanner", async () => {
   const response = await getHome();
@@ -40,10 +43,38 @@ export const fetchNewEveryDay = createAsyncThunk(
     }
   }
 );
+export const fetchLiveStream = createAsyncThunk(
+  "home/fetchLiveStream",
+  async () => {
+    const response = await getHome();
+    if (response.err === 0) {
+      const arr = response?.data?.items.find(
+        (item) => item.sectionId === "hLiveRadio"
+      );
+      return arr;
+    }
+  }
+);
 export const fetcht100 = createAsyncThunk("home/fetcht100", async () => {
   const response = await getHome();
   if (response.err === 0) {
     const arr = response?.data?.items.find((item) => item.sectionId === "h100");
+    return arr;
+  }
+});
+export const fetchRecent = createAsyncThunk("home/fetchRecent", async () => {
+  const response = await getHome();
+  if (response.err === 0) {
+    const arr = response?.data?.items.find(
+      (item) => item.sectionId === "hRecent"
+    );
+    return arr;
+  }
+});
+export const fetchXone = createAsyncThunk("home/fetchXone", async (text) => {
+  const response = await getHome();
+  if (response.err === 0) {
+    const arr = response?.data?.items.find((item) => item.sectionId === text);
     return arr;
   }
 });
@@ -66,6 +97,18 @@ const bannerSlice = createSlice({
     });
     builder.addCase(fetcht100.fulfilled, (state, action) => {
       state.top100 = action.payload;
+    });
+    builder.addCase(fetchXone.fulfilled, (state, action) => {
+      // console.log("action", action);
+      state.xone = action.payload;
+    });
+    builder.addCase(fetchLiveStream.fulfilled, (state, action) => {
+      // console.log("action", action);
+      state.livestream = action.payload;
+    });
+    builder.addCase(fetchRecent.fulfilled, (state, action) => {
+      console.log("action", action);
+      state.resentMusic = action.payload;
     });
   },
 });
