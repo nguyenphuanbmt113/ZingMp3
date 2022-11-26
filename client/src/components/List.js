@@ -1,11 +1,20 @@
 import moment from "moment";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { setCurSongId, setIsPlaying } from "../redux/reducer/musicSlide";
 import icons from "../ultis/icons";
 const { BsMusicNoteBeamed } = icons;
 export const List = ({ songData }) => {
+  const dispatch = useDispatch();
+  const handleClickMusic = (item) => {
+    dispatch(setCurSongId(item));
+    dispatch(setIsPlaying(true));
+  };
   return (
     <>
-      <div className="flex justify-between items-center p-[10px] border-t border-[rgba(0,0,0,0.05)] hover:bg-[#DDE4E4] cursor-pointer">
+      <div
+        className="flex justify-between items-center p-[10px] border-t border-[rgba(0,0,0,0.05)] hover:bg-[#DDE4E4] cursor-pointer"
+        onClick={() => handleClickMusic(songData)}>
         <div className="flex items-center gap-3 flex-1">
           <span>
             <BsMusicNoteBeamed />

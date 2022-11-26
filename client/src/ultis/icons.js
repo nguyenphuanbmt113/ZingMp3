@@ -4,6 +4,7 @@ import {
   MdSkipNext,
 } from "react-icons/md";
 import { RiCompassDiscoverLine } from "react-icons/ri";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { CiShuffle, CiRepeat } from "react-icons/ci";
 import { ImPlay3 } from "react-icons/im";
 import { BiVolumeMute } from "react-icons/bi";
@@ -40,5 +41,6 @@ const icons = {
   ImPlay3,
   BsDot,
   BsMusicNoteBeamed,
+  GiHamburgerMenu,
 };
 export default icons;

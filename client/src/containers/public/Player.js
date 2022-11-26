@@ -5,6 +5,7 @@ import {
   fetchInfoSongById,
   setIsPlaying,
 } from "../../redux/reducer/musicSlide";
+import { unwrapResult } from "@reduxjs/toolkit";
 import icons from "../../ultis/icons";
 const {
   AiOutlineHeart,
@@ -36,33 +37,33 @@ export const Player = () => {
     audio.load();
     if (isPlaying) {
       play();
+    } else {
+      audio.pause();
     }
   }, [audio]);
   const {
     curSongId,
     isPlaying,
-    detailSong,
     detailInfoSong: songInfo,
   } = useSelector((state) => state.song);
   const dispatch = useDispatch();
   useEffect(() => {
-    const getSongById = async () => {
-      const data = await dispatch(fetchDetailSongById(curSongId));
-      return data;
+    const fetchSong = async () => {
+      const [res1, res2] = await Promise.all([
+        dispatch(fetchInfoSongById(curSongId)),
+        dispatch(fetchDetailSongById(curSongId)),
+      ]);
+      const result1 = unwrapResult(res1);
+      const result2 = unwrapResult(res2);
+      if (result2.err === 0) {
+        setAudio(new Audio(result2?.data?.["128"]));
+      } else {
+        setAudio(new Audio());
+        dispatch(setIsPlaying(false));
+      }
     };
-    const getInfoById = async () => {
-      const data = await dispatch(fetchInfoSongById(curSongId));
-      return data;
-    };
-    if (detailSong) {
-      setAudio(new Audio(detailSong?.data?.["128"]));
-    } else {
-      setAudio(new Audio());
-      dispatch(setIsPlaying(false));
-    }
-    getInfoById();
-    getSongById();
-  }, [curSongId]);
+    fetchSong();
+  }, [curSongId, dispatch]);
 
   return (
     <div className="h-full px-5 bg-main-400 flex">
@@ -105,7 +106,6 @@ export const Player = () => {
             ) : (
               <ImPlay3 size={30}></ImPlay3>
             )}
-            {/* <BsFillPlayFill size={30} /> */}
           </span>
           <span className="cursor-pointer">
             <MdSkipNext size={24} />

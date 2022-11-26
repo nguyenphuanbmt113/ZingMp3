@@ -21,9 +21,7 @@ export const SiderLibrary = () => {
       dispatch(setIsPlaying(true));
     }
     if (item.type === 4) {
-      console.log(">>laylist:", item);
       let link = SliceWord(item?.link);
-      console.log("link", link)
       navigate(`${link}`);
     }
   };
@@ -40,7 +38,7 @@ export const SiderLibrary = () => {
       modules={[Autoplay, Pagination, Navigation]}>
       {dataBanner.map((item) => {
         return (
-          <SwiperSlide>
+          <SwiperSlide key={item.banner}>
             <img
               onClick={() => handleClickBanner(item)}
               src={item.banner}

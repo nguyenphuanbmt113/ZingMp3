@@ -13,7 +13,6 @@ export const Album = () => {
       if (response.err === 0) {
         setAlbum(response.data);
       }
-      console.log("response", response);
     };
     fetchAlbum();
   }, [abid]);

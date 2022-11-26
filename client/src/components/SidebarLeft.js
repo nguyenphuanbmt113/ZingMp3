@@ -1,10 +1,16 @@
 import React from "react";
 import { sidebarMenu } from "../ultis/menu";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 export const SidebarLeft = () => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate("/");
+  };
   return (
     <div className="bg-white flex flex-col">
-      <div className="h-[70px] py-[15px] px-[25px] flex items-center justify-start">
+      <div
+        className="h-[70px] py-[15px] px-[25px] flex items-center justify-start"
+        onClick={() => handleClick()}>
         <img
           src="https://static-zmp3.zmdcdn.me/skins/zmp3-v5.1/images/logo.png"
           alt="Logo"

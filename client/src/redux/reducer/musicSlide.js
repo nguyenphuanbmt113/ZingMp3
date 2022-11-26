@@ -41,7 +41,6 @@ const MusicReducer = createSlice({
       state.curSongId = action.payload.encodeId;
     },
     setIsPlaying: (state, action) => {
-      console.log("action", action);
       state.isPlaying = action.payload;
     },
   },
