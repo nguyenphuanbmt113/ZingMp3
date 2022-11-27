@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getHome } from "../../services/apiService";
 
 const initialState = {
+  loader: false,
   dataBanner: [],
   dataPlaylist: [],
   newEveryDay: [],
@@ -10,6 +11,7 @@ const initialState = {
   livestream: [],
   resentMusic: [],
   newRelease: [],
+  weekChart: [],
 };
 export const fetchBanner = createAsyncThunk("home/fetchBanner", async () => {
   const response = await getHome();
@@ -91,6 +93,18 @@ export const fetchXone = createAsyncThunk("home/fetchXone", async (text) => {
     return arr;
   }
 });
+export const fetchWeekChart = createAsyncThunk(
+  "home/fetchWeekChart",
+  async () => {
+    const response = await getHome();
+    if (response.err === 0) {
+      const arr = response?.data?.items.find(
+        (item) => item.sectionType === "weekChart"
+      );
+      return arr;
+    }
+  }
+);
 const homeSlice = createSlice({
   name: "home",
   initialState,
@@ -98,10 +112,15 @@ const homeSlice = createSlice({
     getBanner: (state) => {},
   },
   extraReducers: (builder) => {
-    // Add reducers for additional action types here, and handle loading state as needed
-    builder.addCase(fetchBanner.fulfilled, (state, action) => {
-      state.dataBanner = action.payload.items;
-    });
+    builder
+      .addCase(fetchBanner.fulfilled, (state, action) => {
+        state.dataBanner = action.payload.items;
+        state.loader = false;
+      })
+      .addCase(fetchBanner.pending, (state, action) => {
+        state.loader = true;
+      });
+
     builder.addCase(fetchPlayList.fulfilled, (state, action) => {
       state.dataPlaylist = action.payload;
     });
@@ -112,20 +131,19 @@ const homeSlice = createSlice({
       state.top100 = action.payload;
     });
     builder.addCase(fetchXone.fulfilled, (state, action) => {
-      // console.log("action", action);
       state.xone = action.payload;
     });
     builder.addCase(fetchLiveStream.fulfilled, (state, action) => {
-      // console.log("action", action);
       state.livestream = action.payload;
     });
     builder.addCase(fetchRecent.fulfilled, (state, action) => {
-      // console.log("action", action);
       state.resentMusic = action.payload;
     });
     builder.addCase(fetchNewRelease.fulfilled, (state, action) => {
-      // console.log("action", action);
       state.newRelease = action.payload;
+    });
+    builder.addCase(fetchWeekChart.fulfilled, (state, action) => {
+      state.weekChart = action.payload;
     });
   },
 });

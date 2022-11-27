@@ -8,15 +8,14 @@ import { Loading } from "../../components/Loading";
 import { useSelector } from "react-redux";
 export const Public = () => {
   const { loading } = useSelector((state) => state.loading);
+  const { loader } = useSelector((state) => state.home);
   const [show, setShow] = useState(false);
-  console.log("show", show);
   const handleShow = () => {
     setShow(!show);
   };
   const handleClose = () => {
     setShow(false);
   };
-  // console.log("loading", loading);
   return (
     <div className="w-full flex flex-col min-h-screen">
       <div className="h-full flex flex-auto">
@@ -29,11 +28,14 @@ export const Public = () => {
           <SidebarLeft handleClose={handleClose}></SidebarLeft>
         </div>
         <div className="w-full flex-auto bg-gray-100">
-          {loading && (
-            <div className="absolute inset-0 bg-black/50 z-50 flex items-center justify-center">
+          {loading === true || loader === true ? (
+            <div className="absolute inset-0 bg-black/50 z-[1000] flex items-center justify-center">
               <Loading></Loading>
             </div>
+          ) : (
+            ""
           )}
+
           <div className="h-[70px] px-[59px] flex items-center mb-5 lg:px-[50px]">
             <Header show={show} handleShow={handleShow}></Header>
           </div>
@@ -45,7 +47,7 @@ export const Public = () => {
           <SidebarRight></SidebarRight>
         </div>
       </div>
-      <div className="flex-none h-[90px] w-full bg-gray-500 z-[100]">
+      <div className="fixed bottom-0 left-0 right-0 h-[90px] w-full bg-gray-500 z-[10000]">
         <Player></Player>
       </div>
     </div>

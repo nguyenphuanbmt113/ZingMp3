@@ -21,6 +21,7 @@ const {
 } = icons;
 export const Player = () => {
   const [audio, setAudio] = useState(new Audio());
+  console.log("audio", audio);
   const play = async () => {
     await audio.play();
   };
@@ -56,8 +57,10 @@ export const Player = () => {
       const result1 = unwrapResult(res1);
       const result2 = unwrapResult(res2);
       if (result2.err === 0) {
+        audio.pause();
         setAudio(new Audio(result2?.data?.["128"]));
       } else {
+        audio.pause();
         setAudio(new Audio());
         dispatch(setIsPlaying(false));
       }

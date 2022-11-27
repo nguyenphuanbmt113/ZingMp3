@@ -3,9 +3,7 @@ import { useSelector } from "react-redux";
 import SongItem from "./songItem";
 export const NewRelease = () => {
   const { newRelease } = useSelector((state) => state.home);
-  console.log("newRelease", newRelease);
   const [isActive, setIsActive] = useState(0);
-  // const [tab, setTab] = useState("vi");
   return (
     <div className="my-12 flex flex-col gap-5">
       <div className="flex items-center justify-between">

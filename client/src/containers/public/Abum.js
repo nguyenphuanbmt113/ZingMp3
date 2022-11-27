@@ -8,8 +8,6 @@ import { setLoading } from "../../redux/reducer/loadingSlice";
 import { getAlbum } from "../../services/apiService";
 export const Album = () => {
   const dispatch = useDispatch();
-  // const { loading } = useSelector((state) => state.loading);
-  // console.log("loading", loading);
   const { abid } = useParams();
   const [album, setAlbum] = useState([]);
   useEffect(() => {
