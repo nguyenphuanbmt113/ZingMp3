@@ -1,26 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { NewRelease } from "../../components/NewRelease";
 import Section from "../../components/Section";
 // import { Section } from "../../components/Section";
 import { SiderLibrary } from "../../components/SiderLibrary";
 import {
-  fetchAdban,
   fetchBanner,
   fetchLiveStream,
   fetchNewEveryDay,
+  fetchNewRelease,
   fetchPlayList,
   fetchRecent,
   fetcht100,
   fetchXone,
-} from "../../redux/reducer/bannerSlide";
-const activeTab = "px-4 py-2 bg-gray-500 text-white";
-const noactiveTab = "px-4 py-2 border ";
+} from "../../redux/reducer/homeSlide";
+const activeTab = "px-4 py-2 bg-gray-700 text-white rounded-3xl";
+const noactiveTab = "px-4 py-2 border border-gray-300 rounded-3xl";
 export const Home = () => {
   const [active, setActive] = useState("tab1");
   const dispatch = useDispatch();
   const { dataPlaylist, newEveryDay, top100, xone, livestream } = useSelector(
     (state) => state.home
   );
+
   useEffect(() => {
     dispatch(fetchBanner());
     dispatch(fetchPlayList());
@@ -28,6 +30,7 @@ export const Home = () => {
     dispatch(fetcht100());
     dispatch(fetchLiveStream());
     dispatch(fetchRecent());
+    dispatch(fetchNewRelease());
     dispatch(fetchXone("hXone"));
   }, [dispatch]);
   return (
@@ -37,8 +40,8 @@ export const Home = () => {
         <SiderLibrary></SiderLibrary>
         <Section data={dataPlaylist}></Section>
         <div className="flex flex-col mt-10">
-          <div className="text-xl font-medium mb-4">Mới Phát Hành</div>
-          <div>
+          <div className="text-xl font-medium mb-4">New Dates</div>
+          <div className="flex items-center gap-2">
             <button
               className={active === "tab1" ? activeTab : noactiveTab}
               onClick={() => setActive("tab1")}>
@@ -59,6 +62,7 @@ export const Home = () => {
           )}
         </div>
         <Section data={newEveryDay}></Section>
+        <NewRelease></NewRelease>
         <Section data={top100}></Section>
         <Section data={xone}></Section>
         <div className="w-full h-[500px]"></div>

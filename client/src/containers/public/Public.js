@@ -24,7 +24,7 @@ export const Public = () => {
           <div className="h-[70px] px-[59px] flex items-center mb-5 lg:px-[50px]">
             <Header></Header>
           </div>
-          <Scrollbars style={{ width: "100%", height: "80%" }}>
+          <Scrollbars autoHide style={{ width: "100%", height: "80%" }}>
             <Outlet></Outlet>
           </Scrollbars>
         </div>

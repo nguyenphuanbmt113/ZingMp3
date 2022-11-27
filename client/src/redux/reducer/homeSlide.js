@@ -9,6 +9,7 @@ const initialState = {
   xone: [],
   livestream: [],
   resentMusic: [],
+  newRelease: [],
 };
 export const fetchBanner = createAsyncThunk("home/fetchBanner", async () => {
   const response = await getHome();
@@ -19,6 +20,18 @@ export const fetchBanner = createAsyncThunk("home/fetchBanner", async () => {
     return bannrItem;
   }
 });
+export const fetchNewRelease = createAsyncThunk(
+  "home/fetchNewRelease",
+  async () => {
+    const response = await getHome();
+    if (response.err === 0) {
+      const bannrItem = response?.data?.items.find(
+        (item) => item.sectionType === "new-release"
+      );
+      return bannrItem;
+    }
+  }
+);
 export const fetchPlayList = createAsyncThunk(
   "home/fetchPlayList",
   async () => {
@@ -78,7 +91,7 @@ export const fetchXone = createAsyncThunk("home/fetchXone", async (text) => {
     return arr;
   }
 });
-const bannerSlice = createSlice({
+const homeSlice = createSlice({
   name: "home",
   initialState,
   reducers: {
@@ -107,13 +120,17 @@ const bannerSlice = createSlice({
       state.livestream = action.payload;
     });
     builder.addCase(fetchRecent.fulfilled, (state, action) => {
-      console.log("action", action);
+      // console.log("action", action);
       state.resentMusic = action.payload;
+    });
+    builder.addCase(fetchNewRelease.fulfilled, (state, action) => {
+      // console.log("action", action);
+      state.newRelease = action.payload;
     });
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { getBanner } = bannerSlice.actions;
+export const { getBanner } = homeSlice.actions;
 
-export default bannerSlice.reducer;
+export default homeSlice.reducer;
