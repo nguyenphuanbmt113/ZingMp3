@@ -1,11 +1,16 @@
 import React from "react";
 import icons from "../ultis/icons";
 // import icons from "../../ultis/icons";
-const { AiOutlineArrowRight, AiOutlineArrowLeft } = icons;
+const { AiOutlineArrowRight, AiOutlineArrowLeft, TbGridDots } = icons;
 
-export const Header = () => {
+export const Header = ({ handleShow, show }) => {
   return (
     <>
+      <div
+        className="cursor-pointer lg:block lg:absolute top-[22px] left-[10px] hidden"
+        onClick={() => handleShow()}>
+        <TbGridDots size={25}></TbGridDots>
+      </div>
       <div className="flex items-center w-full">
         <div className="flex gap-2 mr-5">
           <div>

@@ -1,7 +1,7 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { Scrollbars } from "react-custom-scrollbars-2";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Lists } from "../../components/Lists";
 import { setLoading } from "../../redux/reducer/loadingSlice";

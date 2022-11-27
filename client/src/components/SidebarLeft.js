@@ -1,13 +1,20 @@
 import React from "react";
-import { sidebarMenu } from "../ultis/menu";
 import { NavLink, useNavigate } from "react-router-dom";
-export const SidebarLeft = () => {
+import icons from "../ultis/icons";
+import { sidebarMenu } from "../ultis/menu";
+const { BsArrowLeftSquare } = icons;
+export const SidebarLeft = ({ handleClose }) => {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate("/");
   };
   return (
-    <div className="bg-white flex flex-col">
+    <div className="bg-white flex flex-col h-screen relative">
+      <div
+        className="hidden lg:block lg:absolute top-[2%] right-[4%]"
+        onClick={() => handleClose()}>
+        <BsArrowLeftSquare size={20}></BsArrowLeftSquare>
+      </div>
       <div
         className="h-[70px] py-[15px] px-[25px] flex items-center justify-start"
         onClick={() => handleClick()}>

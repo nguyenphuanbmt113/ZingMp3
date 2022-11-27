@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 import { SidebarRight, SidebarLeft } from "../../components";
 import { Player } from "./Player";
@@ -8,12 +8,25 @@ import { Loading } from "../../components/Loading";
 import { useSelector } from "react-redux";
 export const Public = () => {
   const { loading } = useSelector((state) => state.loading);
-  console.log("loading", loading);
+  const [show, setShow] = useState(false);
+  console.log("show", show);
+  const handleShow = () => {
+    setShow(!show);
+  };
+  const handleClose = () => {
+    setShow(false);
+  };
+  // console.log("loading", loading);
   return (
     <div className="w-full flex flex-col min-h-screen">
       <div className="h-full flex flex-auto">
-        <div className="w-[240px] flex-none lg:hidden">
-          <SidebarLeft></SidebarLeft>
+        <div
+          className={
+            show
+              ? "w-[240px] flex-none lg:absolute top-0 left-0 bottom-0 z-[1000]"
+              : "w-[240px] flex-none lg:absolute top-0 -left-[1000px] bottom-0 z-[1000]"
+          }>
+          <SidebarLeft handleClose={handleClose}></SidebarLeft>
         </div>
         <div className="w-full flex-auto bg-gray-100">
           {loading && (
@@ -22,7 +35,7 @@ export const Public = () => {
             </div>
           )}
           <div className="h-[70px] px-[59px] flex items-center mb-5 lg:px-[50px]">
-            <Header></Header>
+            <Header show={show} handleShow={handleShow}></Header>
           </div>
           <Scrollbars autoHide style={{ width: "100%", height: "80%" }}>
             <Outlet></Outlet>

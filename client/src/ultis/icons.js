@@ -3,6 +3,8 @@ import {
   MdSkipPrevious,
   MdSkipNext,
 } from "react-icons/md";
+import { TiDeleteOutline } from "react-icons/ti";
+import { TbGridDots } from "react-icons/tb";
 import { RiCompassDiscoverLine } from "react-icons/ri";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { CiShuffle, CiRepeat } from "react-icons/ci";
@@ -21,8 +23,11 @@ import {
   BsVolumeUp,
   BsDot,
   BsMusicNoteBeamed,
+  BsArrowLeftSquare,
 } from "react-icons/bs";
 const icons = {
+  BsArrowLeftSquare,
+  TbGridDots,
   MdOutlineLibraryMusic,
   RiCompassDiscoverLine,
   BsPieChart,
@@ -42,5 +47,6 @@ const icons = {
   BsDot,
   BsMusicNoteBeamed,
   GiHamburgerMenu,
+  TiDeleteOutline,
 };
 export default icons;
