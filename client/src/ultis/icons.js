@@ -7,9 +7,9 @@ import { TiDeleteOutline } from "react-icons/ti";
 import { TbGridDots } from "react-icons/tb";
 import { RiCompassDiscoverLine } from "react-icons/ri";
 import { GiHamburgerMenu } from "react-icons/gi";
-import { CiShuffle, CiRepeat } from "react-icons/ci";
+import { CiShuffle, CiRepeat, CiHeart, CiPlay1 } from "react-icons/ci";
 import { ImPlay3 } from "react-icons/im";
-import { BiVolumeMute } from "react-icons/bi";
+import { BiVolumeMute, BiDotsHorizontalRounded } from "react-icons/bi";
 import {
   AiOutlinePlayCircle,
   AiOutlineArrowLeft,
@@ -24,8 +24,13 @@ import {
   BsDot,
   BsMusicNoteBeamed,
   BsArrowLeftSquare,
+  BsSuitHeartFill,
 } from "react-icons/bs";
 const icons = {
+  BsSuitHeartFill,
+  BiDotsHorizontalRounded,
+  CiHeart,
+  CiPlay1,
   BsArrowLeftSquare,
   TbGridDots,
   MdOutlineLibraryMusic,
