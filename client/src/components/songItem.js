@@ -1,9 +1,18 @@
 import React, { memo } from "react";
 import moment from "moment";
-import "moment/locale/vi"
+import "moment/locale/vi";
+import { useDispatch } from "react-redux";
+import { setCurSongId, setIsPlaying } from "../redux/reducer/musicSlide";
 const SongItem = ({ data }) => {
+  const dispatch = useDispatch();
+  const handleSongItem = () => {
+    dispatch(setCurSongId(data));
+    dispatch(setIsPlaying(true));
+  };
   return (
-    <div className="p-2 flex gap-3 rounded-xl hover:bg-white transition-all">
+    <div
+      className="p-2 flex gap-3 rounded-xl hover:bg-white transition-all"
+      onClick={() => handleSongItem()}>
       <div className="w-[60px] h-[60px]">
         <img
           src={data.thumbnail}

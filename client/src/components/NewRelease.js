@@ -29,13 +29,23 @@ export const NewRelease = () => {
       {isActive === 0 ? (
         <div className="grid grid-cols-3 gap-4 lg:grid-cols-2">
           {newRelease?.items?.vPop.map((item, index) => {
-            return <SongItem data={item} key={item.encodeId}></SongItem>;
+            return (
+              <SongItem
+                data={item}
+                key={item.encodeId}
+                sid={item.encodeId}></SongItem>
+            );
           })}
         </div>
       ) : (
         <div className="grid grid-cols-3 gap-4 lg:grid-cols-2">
           {newRelease?.items?.others.map((item, index) => {
-            return <SongItem data={item} key={item.encodeId}></SongItem>;
+            return (
+              <SongItem
+                data={item}
+                key={item.encodeId}
+                sid={item.encodeId}></SongItem>
+            );
           })}
         </div>
       )}

@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Artists } from "../../components/Artists";
 import { NewRelease } from "../../components/NewRelease";
 import Section from "../../components/Section";
 // import { Section } from "../../components/Section";
 import { SiderLibrary } from "../../components/SiderLibrary";
 import { WeekChart } from "../../components/WeekChart";
 import {
+  fetchArtist,
   fetchBanner,
   fetchLiveStream,
   fetchNewEveryDay,
@@ -28,9 +30,9 @@ export const Home = () => {
     xone,
     livestream,
     weekChart,
-    loader,
+    artists,
   } = useSelector((state) => state.home);
-  console.log("loader:", loader);
+  console.log("artistsP:", artists);
   useEffect(() => {
     dispatch(fetchBanner());
     dispatch(fetchPlayList());
@@ -40,6 +42,7 @@ export const Home = () => {
     dispatch(fetchRecent());
     dispatch(fetchNewRelease());
     dispatch(fetchWeekChart());
+    dispatch(fetchArtist());
     dispatch(fetchXone("hXone"));
   }, [dispatch]);
   return (
@@ -73,6 +76,7 @@ export const Home = () => {
         <Section data={newEveryDay}></Section>
         <NewRelease></NewRelease>
         <WeekChart data={weekChart}></WeekChart>
+        <Artists></Artists>
         <Section data={top100}></Section>
         <Section data={xone}></Section>
         <div className="w-full h-[500px]"></div>

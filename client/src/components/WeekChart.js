@@ -2,11 +2,9 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 export const WeekChart = ({ data }) => {
-  console.log("data", data);
   const navigate = useNavigate();
   const handleWeekChart = (item) => {
     const link = item?.link.split(".")[0];
-    console.log("link", link)
     navigate(`${link}`);
   };
   return (

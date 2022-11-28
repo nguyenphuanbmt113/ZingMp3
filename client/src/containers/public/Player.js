@@ -21,7 +21,6 @@ const {
 } = icons;
 export const Player = () => {
   const [audio, setAudio] = useState(new Audio());
-  console.log("audio", audio);
   const play = async () => {
     await audio.play();
   };

@@ -12,6 +12,7 @@ const initialState = {
   resentMusic: [],
   newRelease: [],
   weekChart: [],
+  artists: [],
 };
 export const fetchBanner = createAsyncThunk("home/fetchBanner", async () => {
   const response = await getHome();
@@ -105,6 +106,13 @@ export const fetchWeekChart = createAsyncThunk(
     }
   }
 );
+export const fetchArtist = createAsyncThunk("home/fetchArtist", async () => {
+  const response = await getHome();
+  if (response.err === 0) {
+    const arr = response?.data?.items.find((item) => item.sectionId === "hMix");
+    return arr;
+  }
+});
 const homeSlice = createSlice({
   name: "home",
   initialState,
@@ -144,6 +152,9 @@ const homeSlice = createSlice({
     });
     builder.addCase(fetchWeekChart.fulfilled, (state, action) => {
       state.weekChart = action.payload;
+    });
+    builder.addCase(fetchArtist.fulfilled, (state, action) => {
+      state.artists = action.payload;
     });
   },
 });
