@@ -4,7 +4,7 @@ import { Chart } from "chart.js/auto";
 import { Line } from "react-chartjs-2";
 const ChartSection = () => {
   const { charts } = useSelector((state) => state.home);
-  console.log("charts", charts);
+  // console.log("charts", charts);
   const [data, setData] = useState(null);
   console.log("data", data);
   const options = {
@@ -30,7 +30,7 @@ const ChartSection = () => {
       ?.filter((item) => +item.hour % 2 === 0)
       ?.map((item) => `${item.hour}:00`);
     const datasets = [];
-    console.log("labels", labels);
+    // console.log("labels", labels);
     if (charts?.chart?.items) {
       for (let i = 0; i < 3; i++) {
         datasets.push({

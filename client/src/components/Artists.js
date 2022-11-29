@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 export const Artists = () => {
   const { artists } = useSelector((state) => state.home);
-  console.log("artists", artists);
+  // console.log("artists", artists);
   const slice = (string) => {
     string = string.replace("Góc nhạc", "");
     return string;

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
+// import icons from "../ultis/icons";
 import SongItem from "./songItem";
+// const { CiHeart } = icons;
 export const NewRelease = () => {
   const { newRelease } = useSelector((state) => state.home);
   const [isActive, setIsActive] = useState(0);
@@ -32,6 +34,7 @@ export const NewRelease = () => {
             return (
               <SongItem
                 data={item}
+                // icon={<CiHeart></CiHeart>}
                 key={item.encodeId}
                 sid={item.encodeId}></SongItem>
             );
@@ -43,6 +46,7 @@ export const NewRelease = () => {
             return (
               <SongItem
                 data={item}
+                // icon={<CiHeart></CiHeart>}
                 key={item.encodeId}
                 sid={item.encodeId}></SongItem>
             );

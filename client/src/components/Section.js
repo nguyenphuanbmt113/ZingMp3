@@ -1,7 +1,7 @@
 import React, { memo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import icons from "../ultis/icons";
-const { BiDotsHorizontalRounded, CiHeart, CiPlay1, BsSuitHeartFill } = icons;
+const { BiDotsHorizontalRounded, CiHeart, BsSuitHeartFill, BsPlay } = icons;
 const Section = (props) => {
   const [fill, setFill] = useState(false);
   const { data } = props;
@@ -42,7 +42,7 @@ const Section = (props) => {
                     )}
                   </div>
                   <div className="p-2 rounded-full border border-white flex items-center justify-center">
-                    <CiPlay1 size={24}></CiPlay1>
+                    <BsPlay size={24}></BsPlay>
                   </div>
                   <div>
                     <BiDotsHorizontalRounded

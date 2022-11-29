@@ -3,6 +3,7 @@ import {
   MdSkipPrevious,
   MdSkipNext,
 } from "react-icons/md";
+import { HiOutlinePlay } from "react-icons/hi";
 import { TiDeleteOutline } from "react-icons/ti";
 import { TbGridDots } from "react-icons/tb";
 import { RiCompassDiscoverLine } from "react-icons/ri";
@@ -10,6 +11,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { CiShuffle, CiRepeat, CiHeart, CiPlay1 } from "react-icons/ci";
 import { ImPlay3 } from "react-icons/im";
 import { BiVolumeMute, BiDotsHorizontalRounded } from "react-icons/bi";
+import { GrPlay } from "react-icons/gr";
 import {
   AiOutlinePlayCircle,
   AiOutlineArrowLeft,
@@ -25,8 +27,10 @@ import {
   BsMusicNoteBeamed,
   BsArrowLeftSquare,
   BsSuitHeartFill,
+  BsPlay,
 } from "react-icons/bs";
 const icons = {
+  GrPlay,
   BsSuitHeartFill,
   BiDotsHorizontalRounded,
   CiHeart,
@@ -53,5 +57,7 @@ const icons = {
   BsMusicNoteBeamed,
   GiHamburgerMenu,
   TiDeleteOutline,
+  HiOutlinePlay,
+  BsPlay,
 };
 export default icons;
