@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Artists } from "../../components/Artists";
+// import { Artists } from "../../components/Artists";
+// import ChartSection from "../../components/ChartSection";
 import { NewRelease } from "../../components/NewRelease";
 import Section from "../../components/Section";
-// import { Section } from "../../components/Section";
 import { SiderLibrary } from "../../components/SiderLibrary";
 import { WeekChart } from "../../components/WeekChart";
 import {
-  fetchArtist,
+  // fetchArtist,
+  // fetchArtist,
   fetchBanner,
+  fetchChartInfo,
   fetchLiveStream,
   fetchNewEveryDay,
   fetchNewRelease,
@@ -23,16 +25,8 @@ const noactiveTab = "px-4 py-2 border border-gray-300 rounded-3xl";
 export const Home = () => {
   const [active, setActive] = useState("tab1");
   const dispatch = useDispatch();
-  const {
-    dataPlaylist,
-    newEveryDay,
-    top100,
-    xone,
-    livestream,
-    weekChart,
-    artists,
-  } = useSelector((state) => state.home);
-  console.log("artistsP:", artists);
+  const { dataPlaylist, newEveryDay, top100, xone, livestream, weekChart } =
+    useSelector((state) => state.home);
   useEffect(() => {
     dispatch(fetchBanner());
     dispatch(fetchPlayList());
@@ -42,13 +36,13 @@ export const Home = () => {
     dispatch(fetchRecent());
     dispatch(fetchNewRelease());
     dispatch(fetchWeekChart());
-    dispatch(fetchArtist());
+    // dispatch(fetchArtist());
+    dispatch(fetchChartInfo());
     dispatch(fetchXone("hXone"));
   }, [dispatch]);
   return (
     <div className="overflow-y-auto">
       <div className="px-[50px]">
-        {/* <Slider></Slider> */}
         <SiderLibrary></SiderLibrary>
         <Section data={dataPlaylist}></Section>
         <div className="flex flex-col mt-10">
@@ -73,10 +67,11 @@ export const Home = () => {
             <Section data={top100}></Section>
           )}
         </div>
+        {/* <ChartSection></ChartSection> */}
         <Section data={newEveryDay}></Section>
         <NewRelease></NewRelease>
         <WeekChart data={weekChart}></WeekChart>
-        <Artists></Artists>
+        {/* <Artists></Artists> */}
         <Section data={top100}></Section>
         <Section data={xone}></Section>
         <div className="w-full h-[500px]"></div>

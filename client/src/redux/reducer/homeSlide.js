@@ -13,6 +13,7 @@ const initialState = {
   newRelease: [],
   weekChart: [],
   artists: [],
+  charts: [],
 };
 export const fetchBanner = createAsyncThunk("home/fetchBanner", async () => {
   const response = await getHome();
@@ -113,6 +114,18 @@ export const fetchArtist = createAsyncThunk("home/fetchArtist", async () => {
     return arr;
   }
 });
+export const fetchChartInfo = createAsyncThunk(
+  "home/fetchChartInfo",
+  async () => {
+    const response = await getHome();
+    if (response.err === 0) {
+      const arr = response?.data?.items.find(
+        (item) => item.sectionId === "hZC"
+      );
+      return arr;
+    }
+  }
+);
 const homeSlice = createSlice({
   name: "home",
   initialState,
@@ -155,6 +168,9 @@ const homeSlice = createSlice({
     });
     builder.addCase(fetchArtist.fulfilled, (state, action) => {
       state.artists = action.payload;
+    });
+    builder.addCase(fetchChartInfo.fulfilled, (state, action) => {
+      state.charts = action.payload;
     });
   },
 });
