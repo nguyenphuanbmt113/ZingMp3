@@ -1,12 +1,16 @@
 import moment from "moment";
 import "moment/locale/vi";
 import React, { memo, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addtoHistory, removeTodo } from "../redux/reducer/historySlide";
 import { setCurSongId, setIsPlaying } from "../redux/reducer/musicSlide";
-const SongItem = ({ data, icon, iconAfter }) => {
+const SongItem = ({ data, icon, iconAfter, type }) => {
   const [isLike, setIsLike] = useState(false);
+  const { arrayHis } = useSelector((state) => state.history);
+  console.log("arrayHis", arrayHis);
   const dispatch = useDispatch();
-  const handleSongItem = () => {
+  const handleSongItem = (data) => {
+    dispatch(addtoHistory());
     dispatch(setCurSongId(data));
     dispatch(setIsPlaying(true));
   };
@@ -18,7 +22,7 @@ const SongItem = ({ data, icon, iconAfter }) => {
   return (
     <div
       className="py-2 pl-2 pr-10 flex gap-3 rounded-xl hover:bg-gray-200 transition-all relative"
-      onClick={() => handleSongItem()}>
+      onClick={() => handleSongItem(data)}>
       <div className="flex-none w-[60px] h-[60px]">
         <img
           src={data?.thumbnail}

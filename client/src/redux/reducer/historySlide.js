@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   arrayHis: [],
-  count: 0,
 };
 
 export const historySlide = createSlice({
@@ -13,8 +12,14 @@ export const historySlide = createSlice({
       let newItem = action.payload;
       state.arrayHis.push(newItem);
     },
+    // removeTodo: (state, action) => {
+    //   console.log("action", action);
+    //   state.arrayHis = state.arrayHis.filter((ele) => {
+    //     return ele.encodeId !== action.payload;
+    //   });
+    // },
   },
 });
-export const { addtoHistory } = historySlide.actions;
+export const { addtoHistory, removeTodo } = historySlide.actions;
 
 export default historySlide.reducer;

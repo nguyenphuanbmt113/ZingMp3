@@ -5,12 +5,13 @@ import icons from "../ultis/icons";
 import SongItem from "./songItem";
 import { Scrollbars } from "react-custom-scrollbars-2";
 import { SongItemActive } from "./SongItemActive";
-const { BsThreeDots, CiHeart, BsSuitHeartFill } = icons;
+const { BsThreeDots, CiHeart, BsSuitHeartFill, RiDeleteBin2Line } = icons;
 const active = "px-3 py-2 bg-gray-200 rounded-3xl text-main-500";
 const noactive = "px-3 py-2 rounded-3xl text-main-500 border";
 export const SidebarRight = () => {
   const [isActive, setIsActive] = useState(0);
-  // const { newRelease } = useSelector((state) => state.home);
+  const { arrayHis } = useSelector((state) => state.history);
+  console.log("arrayHis", arrayHis);
   const { detailInfoSong, curSongId } = useSelector((state) => state.song);
   const [album, setAlbum] = useState([]);
   const fetchAlbum = async () => {
@@ -64,9 +65,20 @@ export const SidebarRight = () => {
             </span>
           </div>
         </div>
-      )}  
+      )}
       {isActive === 1 ? (
-        <div>Hello em yeu</div>
+        <Scrollbars autoHide style={{ width: "100%", height: "700px" }}>
+          <div className="grid grid-cols-1 gap-4">
+            {arrayHis.map((item, index) => {
+              return (
+                <SongItem
+                  data={item}
+                  icon={<CiHeart></CiHeart>}
+                  iconAfter={<BsSuitHeartFill></BsSuitHeartFill>}></SongItem>
+              );
+            })}
+          </div>
+        </Scrollbars>
       ) : (
         <div className="flex-auto px-[8px] py-2">
           <Scrollbars autoHide style={{ width: "100%", height: "500px" }}>
@@ -76,9 +88,7 @@ export const SidebarRight = () => {
                   <SongItem
                     data={item}
                     icon={<CiHeart></CiHeart>}
-                    iconAfter={<BsSuitHeartFill></BsSuitHeartFill>}
-                    key={item.encodeId}
-                    sid={item.encodeId}></SongItem>
+                    iconAfter={<BsSuitHeartFill></BsSuitHeartFill>}></SongItem>
                 );
               })}
             </div>
