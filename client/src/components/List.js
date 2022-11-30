@@ -1,6 +1,7 @@
 import moment from "moment";
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setHistory } from "../redux/reducer/historySlide";
 import { setCurSongId, setIsPlaying } from "../redux/reducer/musicSlide";
 import icons from "../ultis/icons";
 const { BsMusicNoteBeamed } = icons;

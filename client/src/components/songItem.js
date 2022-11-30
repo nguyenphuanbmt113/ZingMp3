@@ -1,6 +1,6 @@
-import React, { memo, useState } from "react";
 import moment from "moment";
 import "moment/locale/vi";
+import React, { memo, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setCurSongId, setIsPlaying } from "../redux/reducer/musicSlide";
 const SongItem = ({ data, icon, iconAfter }) => {

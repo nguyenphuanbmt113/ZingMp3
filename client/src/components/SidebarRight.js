@@ -12,7 +12,7 @@ export const SidebarRight = () => {
   const [isActive, setIsActive] = useState(0);
   // const { newRelease } = useSelector((state) => state.home);
   const { detailInfoSong, curSongId } = useSelector((state) => state.song);
-  const [album, setAlbum] = useState([]); 
+  const [album, setAlbum] = useState([]);
   const fetchAlbum = async () => {
     let response = await getAlbum(curSongId);
     if (response.err === 0) {
@@ -46,37 +46,45 @@ export const SidebarRight = () => {
           </div>
         </div>
       </div>
-      <div className="py-[8px] px-[8px] bg-main-500 text-white">
-        <SongItemActive
-          data={detailInfoSong}
-          icon={<CiHeart></CiHeart>}
-          iconAfter={<BsSuitHeartFill></BsSuitHeartFill>}></SongItemActive>
-      </div>
-      <div className="px-2 py-4 flex flex-col gap-2 border-b">
-        <div>Tiếp Theo</div>
-        <div>
-          <span>PlayList: </span>
-          <span className="text-main-500 font-medium">
-            {detailInfoSong?.album?.title}
-          </span>
+      {isActive === 0 && (
+        <div className="py-[8px] px-[8px] bg-main-500 text-white">
+          <SongItemActive
+            data={detailInfoSong}
+            icon={<CiHeart></CiHeart>}
+            iconAfter={<BsSuitHeartFill></BsSuitHeartFill>}></SongItemActive>
         </div>
-      </div>
-      <div className="flex-auto px-[8px] py-2">
-        <Scrollbars autoHide style={{ width: "100%", height: "500px" }}>
-          <div className="grid grid-cols-1 gap-4">
-            {album?.items?.map((item, index) => {
-              return (
-                <SongItem
-                  data={item}
-                  icon={<CiHeart></CiHeart>}
-                  iconAfter={<BsSuitHeartFill></BsSuitHeartFill>}
-                  key={item.encodeId}
-                  sid={item.encodeId}></SongItem>
-              );
-            })}
+      )}
+      {isActive === 0 && (
+        <div className="px-2 py-4 flex flex-col gap-2 border-b">
+          <div>Tiếp Theo</div>
+          <div>
+            <span>PlayList: </span>
+            <span className="text-main-500 font-medium">
+              {detailInfoSong?.album?.title}
+            </span>
           </div>
-        </Scrollbars>
-      </div>
+        </div>
+      )}  
+      {isActive === 1 ? (
+        <div>Hello em yeu</div>
+      ) : (
+        <div className="flex-auto px-[8px] py-2">
+          <Scrollbars autoHide style={{ width: "100%", height: "500px" }}>
+            <div className="grid grid-cols-1 gap-4">
+              {album?.items?.map((item, index) => {
+                return (
+                  <SongItem
+                    data={item}
+                    icon={<CiHeart></CiHeart>}
+                    iconAfter={<BsSuitHeartFill></BsSuitHeartFill>}
+                    key={item.encodeId}
+                    sid={item.encodeId}></SongItem>
+                );
+              })}
+            </div>
+          </Scrollbars>
+        </div>
+      )}
     </div>
   );
 };
