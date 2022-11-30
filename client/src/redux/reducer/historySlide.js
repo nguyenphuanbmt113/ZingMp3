@@ -1,17 +1,20 @@
 import { createSlice } from "@reduxjs/toolkit";
+
 const initialState = {
+  arrayHis: [],
   count: 0,
-  todos: [],
 };
-const HistorySlide = createSlice({
+
+export const historySlide = createSlice({
   name: "history",
   initialState,
   reducers: {
-    setHistory: (state, action) => {},
+    addtoHistory: (state, action) => {
+      let newItem = action.payload;
+      state.arrayHis.push(newItem);
+    },
   },
 });
+export const { addtoHistory } = historySlide.actions;
 
-// Action creators are generated for each case reducer function
-export const { setHistory } = HistorySlide.actions;
-
-export default HistorySlide.reducer;
+export default historySlide.reducer;

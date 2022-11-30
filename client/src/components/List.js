@@ -1,7 +1,7 @@
 import moment from "moment";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { setHistory } from "../redux/reducer/historySlide";
+import { useDispatch } from "react-redux";
+import { addtoHistory } from "../redux/reducer/historySlide";
 import { setCurSongId, setIsPlaying } from "../redux/reducer/musicSlide";
 import icons from "../ultis/icons";
 const { BsMusicNoteBeamed } = icons;
@@ -10,6 +10,7 @@ export const List = ({ songData }) => {
   const handleClickMusic = (item) => {
     dispatch(setCurSongId(item));
     dispatch(setIsPlaying(true));
+    dispatch(addtoHistory(item));
   };
   return (
     <>
